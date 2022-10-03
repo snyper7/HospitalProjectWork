@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, ActivityIndicator } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, ActivityIndicator ,SafeAreaView} from 'react-native'
 import React, { useState } from 'react'
 import logo from '../assets/logo2.png'
 const { width, height } = Dimensions.get('window')
@@ -32,8 +32,11 @@ const Login = () => {
             if(jsonRes[0].type === 'doc'){
                   navigation.navigate('DocApplication',jsonRes)
             }else if (jsonRes[0].type === 'user'){
-                 navigation.navigate('UserApplication')
-            }else{
+                 navigation.navigate('UserApplication',jsonRes)
+            }else if (jsonRes[0].type === 'admin'){
+                navigation.navigate('AdminApplication',jsonRes)
+            }
+            else{
                 console.log('details not found')
             }
             setLoading(false)

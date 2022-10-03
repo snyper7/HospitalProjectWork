@@ -66,9 +66,12 @@ const DocRegister = () => {
                         <RNPickerSelect
                         onValueChange={(value) => setSpecialty(value)}
                         items={[
-                            { label: 'Football', value: 'football' },
-                            { label: 'Baseball', value: 'baseball' },
-                            { label: 'Hockey', value: 'hockey' },
+                            { label: 'Medicine Specialist', value: 'Medicine' },
+                            { label: 'Dentist', value: 'Dentist' },
+                            { label: 'Surgeon', value: 'Surgeon' },
+                            { label: 'Optometrist', value: 'Optometrist' },
+                            { label: 'Sonographer', value: 'Sonographer' },
+
                         ]}
                     />
                     </View>
@@ -110,7 +113,7 @@ const DocRegister = () => {
                         />
                     </View>
                     <View>
-                        <Text style={styles.label}>Date Of Hospital</Text>
+                        <Text style={styles.label}>Name Of Hospital</Text>
                         <TextInput
                             placeholder='hos'
                             style={styles.inp}

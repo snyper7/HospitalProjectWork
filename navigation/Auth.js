@@ -9,6 +9,7 @@ import UserApplication from './UserApplication';
 import UserRegister from '../components/userReg';
 import DocRegister from '../components/docReg';
 import DocApplication from './DocApplication'
+import AdminApplication from './AdminApplication'
 
 // screen tracking is enabled using firebase Analytics
 const Stack = createNativeStackNavigator();
@@ -25,6 +26,8 @@ function Auth() {
         <Stack.Screen name="DocApplication" component={DocApplication} options={{ headerShown: false }} />
         <Stack.Screen name="userReg" component={UserRegister} options={{ headerShown: false }} />
         <Stack.Screen name="docReg" component={DocRegister} options={{ headerShown: false }} />
+        <Stack.Screen name="AdminApplication" component={AdminApplication} options={{ headerShown: false }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
