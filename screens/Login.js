@@ -1,13 +1,16 @@
 import { StyleSheet, Text, View, Dimensions, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, ActivityIndicator ,SafeAreaView} from 'react-native'
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import logo from '../assets/logo2.png'
 const { width, height } = Dimensions.get('window')
 import { useNavigation } from '@react-navigation/native'
 import Config from '../Config/index'
 import { Base64 } from 'js-base64'
+import { appState } from '../state'
 
 const Login = () => {
     const navigation = useNavigation()
+    const {doctor,setDoctor} = useContext(appState)
+
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -16,8 +19,8 @@ const Login = () => {
     const Login = async () => {
         setLoading(true)
         const data = {
-            email: email,
-            password: password
+            email:  email.toLowerCase(),
+            password: password.toLowerCase()
         }
         await fetch(`${Config.serverURL}/users/login`, {
             method: "POST",
@@ -30,7 +33,8 @@ const Login = () => {
         }).then((res) => res.json()).then((jsonRes) => {
             console.log('data res===?>', jsonRes[0].type)
             if(jsonRes[0].type === 'doc'){
-                  navigation.navigate('DocApplication',jsonRes)
+                  navigation.navigate('DocApplication')
+                  setDoctor(jsonRes)
             }else if (jsonRes[0].type === 'user'){
                  navigation.navigate('UserApplication',jsonRes)
             }else if (jsonRes[0].type === 'admin'){

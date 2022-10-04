@@ -3,35 +3,12 @@ import React from 'react'
 import logo from '../assets/logo2.png'
 const { width, height } = Dimensions.get('window')
 import { useNavigation } from '@react-navigation/native'
+import UserRegister from '../components/userReg'
 
 const Register = () => {
     const navigation = useNavigation()
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
-            <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
-                <Text style={styles.loginText}>Register As</Text>
-                <Text style={styles.cen}>Kindly Choose below.</Text>
-                <View style={styles.filedbox}>
-                     
-                    <TouchableOpacity onPress={()=>navigation.navigate('userReg')} style={[styles.butt, { borderWidth: 1, borderColor: 'gray' }]}>
-                        <Text style={styles.btxt}>User (Patient)</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={()=>navigation.navigate('docReg')} style={[styles.butt, { borderWidth: 1, borderColor: 'gray' }]}>
-                        <Text style={styles.btxt}>Doctor</Text>
-                    </TouchableOpacity>
-
-                    <Text style={styles.tell}>
-                        Already have an accout ?
-                    </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Login')} style={[styles.butt, { backgroundColor: '#1363DF' }]}>
-                        <Text style={[styles.btxt, { color: 'white' }]}>Login</Text>
-                    </TouchableOpacity>
-
-                </View>
-            </ScrollView>
-        </KeyboardAvoidingView>
-
+      <UserRegister/>
     )
 }
 

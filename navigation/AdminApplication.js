@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fontisto } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 import HomeStack from '../screens/HomeStack';
-import DocHome from '../screens/DocHome';
+import DocHome from '../screens/DocHome'
 import AdminHome from '../screens/AdminHome';
 import DocRegister from '../components/docReg';
 
@@ -27,7 +27,7 @@ const DocApplication = () => {
               iconName = focused ? 'man' : 'man';
             }
             if (route.name === 'User') {
-              iconName = focused ? 'user' : 'io';
+              iconName = focused ? 'person' : 'person';
             }
             if (route.name === 'Add Doctor') {
               iconName = focused ? 'person' : 'person';
@@ -40,7 +40,7 @@ const DocApplication = () => {
         })}
       >
         <Tab.Screen name="Home" component={AdminHome} options={{ headerShown: false }} />
-        <Tab.Screen name="Doctors" component={AdminHome} options={{ headerShown: false }} />
+        <Tab.Screen name="Doctors" component={DocHome} options={{ headerShown: false }} />
         <Tab.Screen name="User" component={AdminHome} options={{ headerShown: false }} />
         <Tab.Screen name="Add Doctor" component={DocRegister} options={{ headerShown: false }} />
       </Tab.Navigator>

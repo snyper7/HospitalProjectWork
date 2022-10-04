@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {StateContext} from './State/index'
+import {appState} from './state'
 import Auth from './navigation/Auth';
 import Config from './Config';
 import DocApplication from './navigation/DocApplication';
@@ -13,6 +13,7 @@ export default function App() {
 
 
   const [user, setUser] = useState('')
+  const [doctor,setDoctor] = useState('')
 
 
   const getUser = async () => {
@@ -33,7 +34,7 @@ export default function App() {
 
   if (user) {
     return (
-      <StateContext.Provider value={{}}> 
+      <StateContext.Provider value={{doctor,setDoctor}}> 
         <View style={styles.container}>
           <Text>go to application</Text>
           <StatusBar style="auto" />
@@ -42,9 +43,9 @@ export default function App() {
     );
   } else {
     return (
-      <StateContext.Provider value={{}}>
+      <appState.Provider value={{doctor,setDoctor}}>
         <Auth/>
-      </StateContext.Provider>
+      </appState.Provider>
     );
   }
 

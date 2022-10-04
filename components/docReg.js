@@ -44,7 +44,7 @@ const DocRegister = () => {
             console.log('res===?>',jsonRes)
             console.log('Doctors registered  successfully')
             setLoading(false)
-            navigation.navigate('Login')
+            navigation.navigate('Home')
         }).catch((error) => {
             console.log(error)
         })

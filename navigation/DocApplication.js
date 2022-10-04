@@ -5,6 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 const Tab = createBottomTabNavigator();
 import HomeStack from '../screens/HomeStack';
 import DocHome from '../screens/DocHome';
+import DoctorsDashboard from '../screens/doctorsDashboard';
 
 const DocApplication = () => {
 
@@ -17,7 +18,7 @@ const DocApplication = () => {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-            if (route.name === 'HomeStack') {
+            if (route.name === 'Home') {
               iconName = focused ? 'home' : 'home';
             }
             if (route.name === 'Browse') {
@@ -36,10 +37,10 @@ const DocApplication = () => {
           tabBarInactiveTintColor: 'gray',
         })}
       >
-        <Tab.Screen name="HomeStack" component={DocHome} options={{ headerShown: false }} />
-        <Tab.Screen name="Browse" component={DocHome} options={{ headerShown: false }} />
-        <Tab.Screen name="Basket" component={DocHome} options={{ headerShown: false }} />
-        <Tab.Screen name="Account" component={DocHome} options={{ headerShown: false }} />
+        <Tab.Screen name="Home" component={DoctorsDashboard} options={{ headerShown: false }} />
+        <Tab.Screen name="Browse" component={DoctorsDashboard} options={{ headerShown: false }} />
+        <Tab.Screen name="Basket" component={DoctorsDashboard} options={{ headerShown: false }} />
+        <Tab.Screen name="Account" component={DoctorsDashboard} options={{ headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   )

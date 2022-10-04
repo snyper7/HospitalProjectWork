@@ -1,11 +1,35 @@
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
-import React from 'react'
+import React,{useEffect,useState,useRef} from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import Config from '../Config';
+import io from 'socket.io-client'
 const AdminHome = () => {
+    const socketRef= useRef()
+    const [userCount,setUserCount]=useState()
+    const [docCount,setDocCount]=useState()
+
+    useEffect(()=>{
+
+        socketRef.current = io(Config.serverURL)
+        socketRef.current.emit('count-user','text')
+        socketRef.current.emit('count-doc','text')
+
+        socketRef.current.on('count-user',(data)=>{
+            console.log(data)
+            setUserCount(data)
+        })
+        socketRef.current.on('count-doc',(data)=>{
+            console.log(data)
+            setDocCount(data)
+        })
+
+    },[])
+
+    
     return (
-        <SafeAreaView style={{flex:1}}>
+        <SafeAreaView style={{flex:1}}>   
             <Text style={styles.dashboard}>Dashboard</Text>
             <View style={styles.dash}>
                 <View style={styles.rowbox}>
@@ -13,7 +37,7 @@ const AdminHome = () => {
                         <MaterialCommunityIcons name="doctor" size={30} color="white" />
                     </View>
                     <View style={styles.rr}>
-                    <Text style={styles.txt}>Doctors 34</Text>
+                    <Text style={styles.txt}>Doctors {docCount}</Text>
                     </View>
 
                 </View>
@@ -22,7 +46,7 @@ const AdminHome = () => {
                         <Feather name="users" size={30} color="white" />
                     </View>
                     <View style={styles.rr}>
-                    <Text style={styles.txt}>Users 4</Text>
+                    <Text style={styles.txt}>Users {userCount}</Text>
                     </View>
                 </View>
                 <View style={styles.rowbox}>
